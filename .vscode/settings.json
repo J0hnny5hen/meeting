@@ -1,0 +1,14 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.validate": [
+    "typescript"
+  ],
+  "search.exclude": {
+    "**/*.code-search": false,
+    "**/bower_components": false,
+    "**/node_modules": false
+  },
+  "editor.tokenColorCustomizations": null
+}
