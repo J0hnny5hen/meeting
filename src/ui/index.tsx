@@ -1,12 +1,18 @@
 import React from 'react'
-import 'normalize.css'
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { createBrowserHistory } from 'history'
+import { Router, Route } from 'react-router'
 
+import { HomePage } from './home'
 import BasicLayout from './basic-layout'
+import './index.styl'
 
 export default function App() {
   return (
     <BasicLayout>
-      <div>1231231</div>
+      <Router history={createBrowserHistory()}>
+        <Route exact path='/' component={HomePage} />
+      </Router>
     </BasicLayout>
   )
 }

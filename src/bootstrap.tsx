@@ -1,21 +1,23 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { configure } from 'mobx'
-// import { } from 'rxjs/observable'
+import { call, when, hasIn } from 'ramda'
+import 'normalize.css'
 
 import { i18n } from '@ui/shared-store'
-import { LANG } from '@declare'
 
+import starter from './starter'
 import App from './ui'
-// 用户检测
-// const tasks = [
 
-// ]
-// mobx settings
-configure({ enforceActions: 'always' })
-// ua detect for i18n
-i18n.setLanguage(navigator.language as LANG)
-render(<App />, document.getElementById('root'))
-if (module.hot) {
-  module.hot.accept()
-}
+const tasks = [
+  // mobx settings
+  () => Promise.resolve().then(() => configure({ enforceActions: 'observed' })),
+  // ua detect for i18n
+  () => Promise.resolve().then(() => i18n.setLanguage(navigator.language)),
+]
+
+starter(...tasks)
+  .then(() => { render(<App />, document.getElementById('root')) })
+
+// hmr
+call(when(hasIn('hot'), (o) => { o.hot?.accept() }), module)

@@ -1,3 +1,1 @@
-export default class Settings {
-
-}
+// import { observable } from 'mobx'

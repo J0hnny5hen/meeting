@@ -16,7 +16,7 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version",
-      "last 1 ie version"
+      "ie >= 9"
     ]
   },
   "scripts": {
@@ -31,6 +31,7 @@
     "classnames": "^2.2.6",
     "lodash": "^4.17.20",
     "mobx": "6.0.4",
+    "mobx-react": "7.0.5",
     "normalize.css": "^8.0.1",
     "ramda": "^0.27.1",
     "react": "17.0.1",
@@ -43,6 +44,7 @@
     "@babel/core": "^7.12.9",
     "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@babel/plugin-proposal-decorators": "^7.12.1",
+    "@babel/plugin-transform-runtime": "^7.12.10",
     "@babel/preset-env": "^7.12.7",
     "@babel/preset-react": "^7.12.7",
     "@babel/preset-typescript": "^7.12.7",
@@ -59,8 +61,9 @@
     "@types/mini-css-extract-plugin": "^1.2.1",
     "@types/node": "^14.14.10",
     "@types/ramda": "^0.27.32",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
+    "@types/react": "17.0.0",
+    "@types/react-dom": "17.0.0",
+    "@types/react-router": "5.1.8",
     "@types/terser-webpack-plugin": "^5.0.2",
     "@types/ua-parser-js": "^0.7.34",
     "@types/webpack": "^4.41.25",
@@ -90,6 +93,7 @@
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "file-loader": "^6.2.0",
     "friendly-errors-webpack-plugin": "^1.7.0",
     "html-webpack-plugin": "^5.0.0-alpha.14",
     "husky": "^4.3.5",
