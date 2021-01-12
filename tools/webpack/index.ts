@@ -11,7 +11,7 @@ import getPlugins from './plugins'
 import { fork, formatStats, resolvePath } from './util'
 import { ENV, NODE_ENV } from './types'
 
-const env = process.env as ENV
+const env = process.env as unknown as ENV
 
 const argv = getArgv(env || {})
 
@@ -38,9 +38,21 @@ const config = {
       'node_modules',
     ],
     alias: {
+      '@config': resolvePath('src/config'),
+      '@apps': resolvePath('src/apps'),
+      '@core': resolvePath('src/core'),
       '@declare': resolvePath('src/declare'),
+      '@model': resolvePath('src/model'),
+      '@proxy': resolvePath('src/proxy'),
+      '@service': resolvePath('src/service'),
       '@tool': resolvePath('src/tool'),
       '@ui': resolvePath('src/ui'),
+    },
+    fallback: {
+      assert: require.resolve('assert/'),
+      stream: require.resolve('stream-browserify'),
+      buffer: require.resolve('buffer'),
+      process: require.resolve('process'),
     },
   },
 
@@ -59,7 +71,7 @@ fork(
     // dev
     const server = new WebpackDevServer(
       webpack(config),
-      { hot: true },
+      { hot: true, historyApiFallback: true },
     )
     server.listen(argv.port)
   },

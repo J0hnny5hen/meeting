@@ -1,4 +1,5 @@
 export * from './button'
 export * from './checkbox'
 export * from './input'
-export * from './form'
+export * from './triangle'
+export * from './loading'

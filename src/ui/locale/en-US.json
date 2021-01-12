@@ -268,7 +268,10 @@
     "session": {
       "userName": "User Name",
       "password": "Password",
-      "roomName": "Room Name"
+      "roomName": "Room Name",
+      "openMicro": "open microphone",
+      "openCamera": "open camera",
+      "join": "join"
     },
     "invite": "Invite",
     "muteAllAudio": "Mute All Audio",

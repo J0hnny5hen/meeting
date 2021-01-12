@@ -2,10 +2,17 @@ import React, { ChangeEvent } from 'react'
 import { TextField, TextFieldProps } from '@material-ui/core'
 import { noop } from 'lodash'
 
-export type InputProps = Omit<TextFieldProps, 'onChange'> & { onChange?: (name: string, evt: React.ChangeEvent<HTMLInputElement>) => void }
+interface ExtraProps<T>{
+  errMsg?: string
+  onChange?: (name: T, value: any) => void
+}
 
-export function Input(props: InputProps) {
-  const { onChange = noop, name, error = null, ...rest } = props
-  const handleChange = (evt: ChangeEvent) => onChange(name, evt)
-  return <TextField variant='outlined' onChange={handleChange} {...(error && { error: true, helperText: error })} {...rest} />
+export type InputProps<K> =
+  Omit<TextFieldProps, 'onChange'> &
+  ExtraProps<K>
+
+export function Input<F>(props: InputProps<F>) {
+  const { onChange = noop, name, errMsg = '', ...rest } = props
+  const handleChange = (evt: ChangeEvent<HTMLInputElement>) => onChange(name, evt.target.value)
+  return <TextField variant='outlined' onChange={handleChange} {...(errMsg && { error: true, helperText: errMsg })} {...rest} />
 }

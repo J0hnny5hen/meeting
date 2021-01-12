@@ -227,7 +227,10 @@
     "session": {
       "userName": "昵称",
       "password": "密码",
-      "roomName": "房间名"
+      "roomName": "房间名",
+      "openMicro": "打开麦克风",
+      "openCamera": "打开摄像头",
+      "join": "加入"
     },
     "invite": "邀请",
     "muteAllAudio": "全体静音",

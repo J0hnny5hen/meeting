@@ -50,6 +50,22 @@
   }
 }
 
+.home-notice {
+   cursor: pointer;
+   display: flex;
+   width: 20px;
+   height: 20px;
+   &::after {
+     width: 100%;
+     height: 100%;
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: contain;
+     content: ' ';
+     background-image: url('./assets/icon-shape.png');
+  }
+}
+
 .facade-notice {
   border: 1px solid #E9EFF4;
   background: white;
@@ -114,7 +130,7 @@
 
 .login {
   width: 420px;
-  height: 653px;
+  height: 707px;
   background: rgba(255,255,255,1);
   box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.2);
   border-radius: 8px;
@@ -134,7 +150,7 @@
   display: flex;
   flex: 1 1;
   flex-direction: column;
-  padding: 60px;
+  padding: 60px 60px 0 60px;
   position: relative;
 }
 
@@ -146,6 +162,9 @@
   margin-bottom: 52px;
 }
 
+.triangle_list {
+  padding-inline-start: 20px
+}
 
 .login-card {
   display: flex;
@@ -209,11 +228,10 @@
 }
 
 .login-btn {
-  position: relative;
-  top: 14px;
+  margin-top: 20px !important;
 }
 
-.login-btn.MuiButton-containedPrimary {
+.MuiButton-containedPrimary {
   background-color: #4DA1FF !important;
   height: 42px;
 }
@@ -274,3 +292,18 @@
     border-color: #f44336;
   }
 }
+
+.opentrack__label
+  font-size: 12px
+
+.login__footer
+  margin-top: 20px
+  padding: 10px 20px
+  height: 54px
+  background: #000000
+  font-size: 12px
+  box-sizing: border-box
+  line-height: 17px
+  color: white
+  border-radius: 2px
+  opacity: 0.75

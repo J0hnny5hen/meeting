@@ -41,7 +41,7 @@ module.exports = {
     }
   },
   rules: {
-    semi: ['error', 'never'],
+    semi: ["error", "never"],
     'no-shadow': 0,
     'import/extensions': 0,
     'import/no-extraneous-dependencies': [
@@ -59,11 +59,7 @@ module.exports = {
         ],
       },
     ],
-    'import/no-unresolved': [
-      2, 
-      { 'caseSensitive': false }
-    ],
-    'no-console': ['error', { allow: ['warn', 'info', 'error'] }],
+    'no-console': ['error', { allow: ['warn', 'info', 'error', 'dir'] }],
     'max-len': ['error', { code: 150}],
     'react/jsx-filename-extension': [2, { 'extensions': ['.js', '.jsx', '.ts', '.tsx'] }],
     'jsx-quotes': ['error', 'prefer-single'],
@@ -77,13 +73,18 @@ module.exports = {
     'import/no-extraneous-dependencies': ['error',  {'devDependencies': true}],
     'no-dupe-class-members': 'off',
     'class-methods-use-this': 'off',
+    'no-useless-constructor': 'off',
+    'no-empty-function': 'off',
     'lines-between-class-members': ['error', 'always', { 'exceptAfterSingleLine': true }],
     'jsx-a11y/click-events-have-key-events': 'off',
     'react/jsx-props-no-spreading': 'off',
     'jsx-a11y/no-static-element-interactions': 'off',
     'react/destructuring-assignment': 'off',
+    'func-names': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],
     '@typescript-eslint/no-unused-vars': [2, { args: 'none' }],
     '@typescript-eslint/no-shadow': [2, { ignoreTypeValueShadow: true }],
+    'indent': 'off',
+    '@typescript-eslint/indent': ['error',  2],
   },
 };
