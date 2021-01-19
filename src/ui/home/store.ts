@@ -1,7 +1,7 @@
 import { Store } from '@tool/connector/store'
 import { action, makeObservable, observable } from 'mobx'
 import { Subject } from 'rxjs'
-import { filter, map, switchMap, tap } from 'rxjs/operators'
+import { filter, map, switchMap, tap, concatMap } from 'rxjs/operators'
 import { mapValues } from 'lodash'
 
 import { LoginFieldKey as FieldKey, StorageFields, LoginFields, initialLoginFields } from '@declare'
@@ -62,7 +62,10 @@ export default class HomeStore extends Store {
         .pipe(
           filter(isSuccessState),
           map((resp) => resp.response),
+          tap(console.info),
         )),
+      concatMap(({ roomId, userToken }) => operatorAPI.getRoomInfo(roomId as string, userToken as string)
+        .getLoading$()),
     )
   }
 }

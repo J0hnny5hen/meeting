@@ -8,7 +8,12 @@ export default class BasicAjax {
 
   private withCredentials = true
 
-  constructor(host: string = '') { this.setHost(host) }
+  private headers = {}
+
+  constructor(host: string = '', headers = {}) {
+    this.setHost(host)
+    this.setHeaders(headers)
+  }
 
   setHost(host: string) {
     this.host = this.compose(host, 'apps')
@@ -18,11 +23,19 @@ export default class BasicAjax {
     return this.host
   }
 
-  protected ajax(header: AjaxRequest): Observable<AjaxResponse> {
+  setHeaders(headers: object) {
+    this.headers = headers
+  }
+
+  protected ajax(options: AjaxRequest): Observable<AjaxResponse> {
+    if (options.headers) {
+      this.setHeaders({ ...this.headers, ...options.headers })
+    }
     return ajax({
-      ...header,
+      ...options,
+      headers: this.headers,
       withCredentials: this.withCredentials,
-      url: this.prefixApiHost(this.host, header.url!),
+      url: this.prefixApiHost(this.host, options.url!),
       crossDomain: true,
     }).pipe(
       map((value) => value.xhr.response.data),
@@ -30,9 +43,9 @@ export default class BasicAjax {
     )
   }
 
-  get(url: string, query: Record<string, unknown>) {
+  get(url: string, query = {}, options: AjaxRequest = {}) {
     const uri = this.buildQuery(url, query)
-    return this.ajax({ url: uri, method: 'get' })
+    return this.ajax({ url: uri, method: 'get', ...options })
   }
 
   post(url: string, body: Object, options?: AjaxRequest) {
@@ -47,7 +60,8 @@ export default class BasicAjax {
   buildQuery(url: string, query: Record<string, unknown>) {
     const params = new URLSearchParams()
     forIn(query, (value, key) => params.set(key, `${value}`))
-    return new URL(`?${params.toString()}`, url).toString()
+    const queryString = params.toString()
+    return queryString ? `${url}?${queryString}` : url
   }
 
   protected compose = (path: string, ...tails: string[]) => {

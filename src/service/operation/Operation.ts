@@ -6,7 +6,7 @@ import md5 from 'md5'
 import { HttpMethod, AppId } from '@declare'
 import { defaultConfig } from '@config'
 
-export default class Operation<U> {
+export default class Operation<U, T> {
   id: string
 
   key: string
@@ -21,7 +21,7 @@ export default class Operation<U> {
 
   collectionName?: string
 
-  query?: MangoQuery
+  query?: MangoQuery<T>
 
   before?: () => Observable<any>
 

@@ -1,6 +1,5 @@
 import { Loading, Processor } from '@service'
-import { OperatorAPI } from '@proxy'
-import { StorageAPI } from '@tool'
+import { OperatorAPI, StorageAPI } from '@proxy'
 
 import { ajax } from './ajax'
 import { error$ } from './event'

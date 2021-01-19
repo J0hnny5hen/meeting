@@ -1,0 +1,19 @@
+import { <%= name %>Operation } from '@service'
+import { OperatorAPI, LoadingStreamGetter } from '../../OperatorAPI'
+
+OperatorAPI.prototype.<%= name.charAt(0).toLowerCase() + name.slice(1) %> = function (
+  this: OperatorAPI,
+) {
+  const operation = new <%= name %>Operation(this.ajax)
+  this.processor.add(operation)
+  return this.createOperationResult(operation)
+}
+
+type <%= name %> = (
+) => LoadingStreamGetter & <%= name %>Operation
+
+declare module '../../OperatorAPI' {
+  interface OperatorAPI {
+    <%= name.charAt(0).toLowerCase() + name.slice(1) %>: <%= name %>
+  }
+}

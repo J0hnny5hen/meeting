@@ -1,0 +1,29 @@
+import { Observable, throwError } from 'rxjs'
+import { AjaxError } from 'rxjs/ajax'
+
+import { BasicAjax } from '@tool'
+<%- queryType ? `import { ${ queryType } } from 'declare'\n` : '' -%>
+<%- returnType && queryType !== returnType ? `import { ${ returnType } } from 'declare'\n` : '' -%>
+<%- table ? "import { TableName } from 'declare'\n" : '' -%>
+
+import Operation from '../Operation'
+
+export class <%= name %>Operation extends Operation<<%= queryType || 'null' %>, <%= returnType || 'null'  %><%- hasPagination ? '[]' : '' -%>> {
+  constructor (
+    ajax: BasicAjax,
+  ) {
+    super(ajax)
+<%= table ? `    this.tableName = TableName.${table}\n` : '' %>
+    this.url = ``
+    this.body = {
+      xxx: 'xxx',
+    }
+
+    this.request$ = ajax.<%= method %><<%= returnType || 'null' %>>(this.url, this.body)
+      .pipe(
+        catchError((error) => throwError(error)),
+      )
+    
+    this.generateKey()
+  }
+}

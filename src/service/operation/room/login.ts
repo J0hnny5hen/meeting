@@ -2,10 +2,9 @@ import { BasicAjax } from '@tool'
 
 import { LoginFields, LoginFieldKey, CollectionName } from '@declare'
 import { mapValues } from 'lodash'
-import { defaultConfig } from '@config'
 import Operation from '../Operation'
 
-export class LoginOperation extends Operation<any> {
+export class LoginOperation extends Operation<null, null> {
   constructor(ajax: BasicAjax, fields: LoginFields) {
     super(ajax)
 
@@ -25,13 +24,7 @@ export class LoginOperation extends Operation<any> {
       return temp
     })
 
-    this.request$ = this.ajax.post(this.url, this.body,
-      {
-        headers: {
-          Authorization: `Basic ${defaultConfig.REACT_APP_AGORA_RESTFULL_TOKEN?.replace(/basic\s+|basic/i, '')}`,
-          'Content-Type': 'application/json',
-        },
-      })
+    this.request$ = this.ajax.post(this.url, this.body)
 
     this.generateKey()
   }

@@ -1,3 +1,3 @@
-import './add'
+export * from './OperatorAPI'
 
-export { OperatorAPI } from './OperatorAPI'
+export { StorageAPI } from './StorageAPI'
