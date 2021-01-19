@@ -62,7 +62,6 @@ export default class HomeStore extends Store {
         .pipe(
           filter(isSuccessState),
           map((resp) => resp.response),
-          tap(console.info),
         )),
       concatMap(({ roomId, userToken }) => operatorAPI.getRoomInfo(roomId as string, userToken as string)
         .getLoading$()),

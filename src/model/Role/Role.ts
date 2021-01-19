@@ -1,4 +1,4 @@
-import { makeObservable, observable, reaction } from 'mobx'
+import { makeObservable, observable } from 'mobx'
 import { tap } from 'rxjs/operators'
 import { RxDocument } from 'rxdb'
 import { BehaviorSubject } from 'rxjs'
@@ -19,7 +19,6 @@ export class Role extends Store implements RoleSchema {
       userToken: observable.ref,
     })
     this.reactToRoleChange()
-    reaction(() => this.roomId, () => { console.info('13131') })
   }
 
   @autoSubscribe
