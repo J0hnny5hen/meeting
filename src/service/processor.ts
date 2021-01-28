@@ -88,8 +88,8 @@ export default class Processor {
     return request.request$.pipe(
       concatMap((response) => {
         if (request.collectionName && request.isDelete && this.database) {
-          const delete$ = this.database[request.collectionName!].find().$
-          return delete$.pipe(mapTo(response))
+          // const delete$ = this.database[request.collectionName!].find().$
+          // return delete$.pipe(mapTo(response))
         }
         if (request.collectionName && response && this.database) {
           const upsert$ = from(this.database[request.collectionName!].upsert(response))

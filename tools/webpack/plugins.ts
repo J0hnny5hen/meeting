@@ -3,9 +3,7 @@
 /* eslint-disable max-classes-per-file */
 import CaseSensitivePathsWebpackPlugin from 'case-sensitive-paths-webpack-plugin'
 import FriendlyErrorsPlugin from 'friendly-errors-webpack-plugin'
-import {
-  ProvidePlugin, WebpackPluginInstance, DefinePlugin,
-} from 'webpack'
+import { ProvidePlugin, WebpackPluginInstance, DefinePlugin } from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import DuplicatePackageCheckerPlugin from 'duplicate-package-checker-webpack-plugin'
 import CircularDependencyPlugin from 'circular-dependency-plugin'
@@ -30,9 +28,7 @@ export default function getPlugins(argv: Argv): WebpackPluginInstance[] {
 
     new FriendlyErrorsPlugin(),
 
-    new ProvidePlugin({
-      React: 'react',
-    }),
+    new ProvidePlugin({ React: 'react' }),
 
     /**
      * https://github.com/jantimon/html-webpack-plugin
