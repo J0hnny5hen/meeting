@@ -14,13 +14,13 @@
 
 ## 快速开始
 
-提供`.env`文件，配置项参考`.env.example`文件。使用以下指令快速在本地开启项目，本地可以打开浏览器，输入`localhost:8090`预览项目。
+提供`.env`文件，配置项参考`.env.example`文件。使用以下指令快速在本地开启项目，本地可以打开浏览器，输入`localhost:8090`预览项目:
 
 ```bash
 yarn start
 ```
 
-使用以下指令可以进行构建
+使用以下指令可以进行构建:
 
 ```bash
 # 正常构建
@@ -43,7 +43,7 @@ yarn build:analyze
 
 ### declare
 
-`declare` 文件夹提供了类型声明文件，项目的任何地方可以通过 `import {} from '@declare` 的方式导入类型定义.
+`declare` 文件夹提供了类型声明文件，项目的任何地方可以通过 `import {} from '@declare` 的方式导入类型定义。
 
 ### model
 
@@ -59,11 +59,11 @@ yarn build:analyze
 
 ### tool
 
-`tool` 中提供了全局公用的工具方法和类.
+`tool` 中提供了全局公用的工具方法和类。
 
 ### ui
 
-`ui` 中定义了展示逻辑，
+`ui` 中定义了展示逻辑。
 
 #### ui/component
 
